@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://0apalst6dh5j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8tawl"]
-size = Vector2(400, 20)
+size = Vector2(360, 20)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_4ig3v"]
 polygon = PackedVector2Array(-200, -10, 200, -10, 200, 10, -200, 10)

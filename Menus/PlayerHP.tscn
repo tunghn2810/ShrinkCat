@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bde8j3s6atc68"]
 
 [ext_resource type="Texture2D" uid="uid://2lcrnd8tgw1b" path="res://Player/Heart.png" id="1_rk4kc"]
-[ext_resource type="Script" path="res://Menus/PlayerHP.gd" id="1_uae77"]
+[ext_resource type="Script" path="res://Menus/player_HP.gd" id="1_uae77"]
 [ext_resource type="Texture2D" uid="uid://5y3kqd3o20t4" path="res://Player/Heart_Empty.png" id="2_6cm4o"]
 
 [node name="PlayerHP" type="Control" node_paths=PackedStringArray("emptyHearts")]

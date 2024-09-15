@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c2ymvt8kma1kk"]
 
-[ext_resource type="Script" path="res://Enemies/EnemySpawner.gd" id="1_pbb1c"]
+[ext_resource type="Script" path="res://Enemies/enemy_spawner.gd" id="1_pbb1c"]
 [ext_resource type="AudioStream" uid="uid://c1suot7t0lf6e" path="res://Sounds/enemyPoof.ogg" id="2_sjb75"]
 
 [node name="EnemySpawner" type="Node2D"]

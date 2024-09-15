@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bnb1mdwdho61r" path="res://Menus/PlayAgain.png" id="1_t077c"]
 [ext_resource type="Texture2D" uid="uid://bt2chdb0oe7a4" path="res://Menus/PlayAgain_Pressed.png" id="2_nx062"]
-[ext_resource type="Script" path="res://Menus/PlayAgainButton.gd" id="3_wcxl4"]
+[ext_resource type="Script" path="res://Menus/play_again_button.gd" id="3_wcxl4"]
 
 [node name="PlayAgainButton" type="TextureButton"]
 offset_right = 72.0

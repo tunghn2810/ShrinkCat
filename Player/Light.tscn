@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://epuvsmhh0sdu"]
 
-[ext_resource type="Script" path="res://Player/Light.gd" id="1_d3rnn"]
+[ext_resource type="Script" path="res://Player/light.gd" id="1_d3rnn"]
 [ext_resource type="Texture2D" uid="uid://bejhqmssramo0" path="res://Player/Light_3.png" id="2_jcp2q"]
 
 [node name="Light" type="Node2D"]

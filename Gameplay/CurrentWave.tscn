@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://c1ka201rbnain"]
 
 [ext_resource type="LabelSettings" uid="uid://dx2vouh6g2cge" path="res://UI.tres" id="1_w7ebl"]
-[ext_resource type="Script" path="res://Gameplay/WaveCount.gd" id="2_swwf2"]
+[ext_resource type="Script" path="res://Gameplay/wave_count.gd" id="2_swwf2"]
 
 [node name="CurrentWave" type="Control"]
 layout_mode = 3

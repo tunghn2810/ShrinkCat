@@ -18,9 +18,9 @@ config/icon="res://Icon.png"
 
 [autoload]
 
-GameManager="*res://Gameplay/GameManager.gd"
+GameManager="*res://Gameplay/game_manager.gd"
 PlayerManager="*res://Player/player_manager.gd"
-EnemyManager="*res://Gameplay/EnemyManager.gd"
+EnemyManager="*res://Gameplay/enemy_manager.gd"
 ColorPalette="*res://color_palette.gd"
 TimeManager="*res://time_manager.gd"
 

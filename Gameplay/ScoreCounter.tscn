@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d38w3h1dwge1m"]
 
 [ext_resource type="LabelSettings" uid="uid://dx2vouh6g2cge" path="res://UI.tres" id="1_nv26s"]
-[ext_resource type="Script" path="res://Gameplay/Score.gd" id="2_a3own"]
+[ext_resource type="Script" path="res://Gameplay/score.gd" id="2_a3own"]
 
 [node name="ScoreCounter" type="Control"]
 layout_mode = 3

@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bde8j3s6atc68" path="res://Menus/PlayerHP.tscn" id="4_bdje5"]
 [ext_resource type="PackedScene" uid="uid://c1ka201rbnain" path="res://Gameplay/CurrentWave.tscn" id="6_21d4r"]
 [ext_resource type="PackedScene" uid="uid://byw7pn6823u13" path="res://Gameplay/CurrentEnemyCount.tscn" id="6_yut25"]
-[ext_resource type="Script" path="res://Menus/MainMenu.gd" id="7_1dtip"]
+[ext_resource type="Script" path="res://Menus/main_menu.gd" id="7_1dtip"]
 [ext_resource type="PackedScene" uid="uid://d38w3h1dwge1m" path="res://Gameplay/ScoreCounter.tscn" id="7_w6loo"]
 [ext_resource type="Texture2D" uid="uid://b7r7n2l1tx80i" path="res://Tutorials/KB_W.png" id="8_1wp8x"]
 [ext_resource type="LabelSettings" uid="uid://f072n0du8t6e" path="res://GameName.tres" id="8_hyfdd"]
@@ -97,6 +97,7 @@ position = Vector2(320, -100)
 
 [node name="Wall_Safeguard2" parent="." instance=ExtResource("19_3q4nl")]
 position = Vector2(320, 580)
+rotation = 3.14159
 
 [node name="Wall_Safeguard3" parent="." instance=ExtResource("19_3q4nl")]
 position = Vector2(-20, 240)
