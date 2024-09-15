@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://byw7pn6823u13"]
+
+[ext_resource type="LabelSettings" uid="uid://dx2vouh6g2cge" path="res://UI.tres" id="1_ofmi6"]
+[ext_resource type="Script" path="res://Gameplay/CurrentEnemyCount.gd" id="2_kgyej"]
+
+[node name="CurrentEnemyCount" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="EnemiesLeftCount" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -210.0
+offset_top = -22.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Enemies left:  100"
+label_settings = ExtResource("1_ofmi6")
+script = ExtResource("2_kgyej")

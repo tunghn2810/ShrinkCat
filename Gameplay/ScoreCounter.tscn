@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://d38w3h1dwge1m"]
+
+[ext_resource type="LabelSettings" uid="uid://dx2vouh6g2cge" path="res://UI.tres" id="1_nv26s"]
+[ext_resource type="Script" path="res://Gameplay/Score.gd" id="2_a3own"]
+
+[node name="ScoreCounter" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Score" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -98.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "1234567"
+label_settings = ExtResource("1_nv26s")
+horizontal_alignment = 2
+script = ExtResource("2_a3own")

@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://dx60dlir6reru"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8tawl"]
+size = Vector2(800, 20)
+
+[node name="Wall_Safeguard" type="StaticBody2D"]
+z_index = 5
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_8tawl")
+one_way_collision = true
+one_way_collision_margin = 5.0

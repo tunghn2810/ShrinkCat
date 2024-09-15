@@ -1,0 +1,55 @@
+[gd_scene load_steps=4 format=3 uid="uid://bde8j3s6atc68"]
+
+[ext_resource type="Texture2D" uid="uid://2lcrnd8tgw1b" path="res://Player/Heart.png" id="1_rk4kc"]
+[ext_resource type="Script" path="res://Menus/PlayerHP.gd" id="1_uae77"]
+[ext_resource type="Texture2D" uid="uid://5y3kqd3o20t4" path="res://Player/Heart_Empty.png" id="2_6cm4o"]
+
+[node name="PlayerHP" type="Control" node_paths=PackedStringArray("emptyHearts")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_uae77")
+emptyHearts = [NodePath("Heart/Empty"), NodePath("Heart2/Empty"), NodePath("Heart3/Empty")]
+
+[node name="Heart" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 15.0
+offset_bottom = 13.0
+scale = Vector2(2, 2)
+texture = ExtResource("1_rk4kc")
+
+[node name="Empty" type="TextureRect" parent="Heart"]
+visible = false
+layout_mode = 0
+offset_right = 15.0
+offset_bottom = 13.0
+texture = ExtResource("2_6cm4o")
+
+[node name="Heart2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 32.0
+offset_right = 47.0
+offset_bottom = 13.0
+scale = Vector2(2, 2)
+texture = ExtResource("1_rk4kc")
+
+[node name="Empty" type="TextureRect" parent="Heart2"]
+visible = false
+layout_mode = 0
+offset_right = 15.0
+offset_bottom = 13.0
+texture = ExtResource("2_6cm4o")
+
+[node name="Heart3" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 64.0
+offset_right = 79.0
+offset_bottom = 13.0
+scale = Vector2(2, 2)
+texture = ExtResource("1_rk4kc")
+
+[node name="Empty" type="TextureRect" parent="Heart3"]
+visible = false
+layout_mode = 0
+offset_right = 15.0
+offset_bottom = 13.0
+texture = ExtResource("2_6cm4o")

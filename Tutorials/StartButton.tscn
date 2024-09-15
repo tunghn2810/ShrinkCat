@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bg2lkdb30m2du"]
+
+[ext_resource type="Script" path="res://Tutorials/StartButton.gd" id="1_v550e"]
+[ext_resource type="Texture2D" uid="uid://bd0133gx3segv" path="res://Tutorials/Start.png" id="1_y0ge1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hn60x"]
+radius = 16.0
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_tau62"]
+polygon = PackedVector2Array(16, 0, 15, -6, 12, -11, 11, -12, 6, -15, 0, -16, -6, -15, -11, -12, -12, -11, -15, -6, -16, 0, -15, 6, -12, 11, -11, 12, -6, 15, 0, 16, 6, 15, 11, 12, 12, 11, 15, 6)
+
+[node name="StartButton" type="Area2D"]
+collision_layer = 2
+collision_mask = 8
+script = ExtResource("1_v550e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_y0ge1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_hn60x")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_tau62")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]

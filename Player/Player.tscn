@@ -1,0 +1,121 @@
+[gd_scene load_steps=15 format=3 uid="uid://dq828syq2wo4m"]
+
+[ext_resource type="Texture2D" uid="uid://dlqtpiq3k8y2r" path="res://Player/CatBlob.png" id="1_o83iv"]
+[ext_resource type="Script" path="res://Player/Player.gd" id="1_obeu1"]
+[ext_resource type="Texture2D" uid="uid://chp0u7a11ei6u" path="res://Player/Flashlight_1.png" id="2_r04cm"]
+[ext_resource type="PackedScene" uid="uid://epuvsmhh0sdu" path="res://Player/Light.tscn" id="3_qb56a"]
+[ext_resource type="Texture2D" uid="uid://dw1raohhtakv2" path="res://Player/CatBlob_Cry.png" id="4_mr033"]
+[ext_resource type="AudioStream" uid="uid://kmq4bl2lk7sg" path="res://Sounds/hit.ogg" id="6_s3xl3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_damb4"]
+atlas = ExtResource("4_mr033")
+region = Rect2(0, 0, 18, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25w4l"]
+atlas = ExtResource("4_mr033")
+region = Rect2(18, 0, 18, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t0k4y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_damb4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25w4l")
+}],
+"loop": true,
+"name": &"Lose",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v0k34"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i6a3n"]
+radius = 8.0
+
+[sub_resource type="Animation" id="Animation_y8bwr"]
+resource_name = "Move"
+loop_mode = 1
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.15, 0.85), Vector2(0.85, 1.15), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_mn5lj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4di1g"]
+_data = {
+"Move": SubResource("Animation_y8bwr"),
+"RESET": SubResource("Animation_mn5lj")
+}
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+z_index = 2
+collision_mask = 20
+script = ExtResource("1_obeu1")
+
+[node name="Flash" type="Sprite2D" parent="."]
+texture = ExtResource("2_r04cm")
+offset = Vector2(12, 0)
+
+[node name="Light" parent="Flash" instance=ExtResource("3_qb56a")]
+position = Vector2(18, 0)
+
+[node name="LoseSprite" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_t0k4y")
+animation = &"Lose"
+frame_progress = 0.527705
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_o83iv")
+
+[node name="WallDetection" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_v0k34")
+
+[node name="EnemyDetection" type="Area2D" parent="."]
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetection"]
+shape = SubResource("CircleShape2D_i6a3n")
+
+[node name="iFrameTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="HitPlayer" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_s3xl3")
+volume_db = -5.0
+bus = &"SFX"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4di1g")
+}
+speed_scale = 3.0
+
+[connection signal="body_entered" from="EnemyDetection" to="." method="_on_enemy_detection_body_entered"]

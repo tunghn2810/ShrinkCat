@@ -1,0 +1,52 @@
+[gd_scene load_steps=3 format=3 uid="uid://dpc528etogq2b"]
+
+[ext_resource type="PackedScene" uid="uid://0apalst6dh5j" path="res://Gameplay/Wall.tscn" id="1_ot0oq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7361u"]
+size = Vector2(330, 330)
+
+[node name="PlayArea" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -180.0
+offset_top = -180.0
+offset_right = 180.0
+offset_bottom = 180.0
+color = Color(0.408329, 0.408329, 0.408329, 1)
+
+[node name="Wall" parent="." instance=ExtResource("1_ot0oq")]
+position = Vector2(0, -190)
+
+[node name="Wall2" parent="." instance=ExtResource("1_ot0oq")]
+position = Vector2(0, 190)
+rotation = -3.14159
+
+[node name="Wall3" parent="." instance=ExtResource("1_ot0oq")]
+position = Vector2(-190, 0)
+rotation = -1.5708
+
+[node name="Wall4" parent="." instance=ExtResource("1_ot0oq")]
+position = Vector2(190, 0)
+rotation = 1.5708
+
+[node name="PlayAreaMask" type="Control" parent="." groups=["PlayArea"]]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.0
+offset_top = -180.0
+offset_right = 180.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WarningArea" type="Area2D" parent="." groups=["Warning"]]
+collision_layer = 32
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WarningArea"]
+shape = SubResource("RectangleShape2D_7361u")

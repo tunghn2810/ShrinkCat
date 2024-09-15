@@ -1,0 +1,448 @@
+[gd_scene load_steps=23 format=3 uid="uid://cwrptm7li7rln"]
+
+[ext_resource type="PackedScene" uid="uid://dq828syq2wo4m" path="res://Player/Player.tscn" id="2_durae"]
+[ext_resource type="PackedScene" uid="uid://dpc528etogq2b" path="res://Menus/PlayArea.tscn" id="2_j31kr"]
+[ext_resource type="PackedScene" uid="uid://c2ymvt8kma1kk" path="res://Enemies/EnemySpawner.tscn" id="3_3uk0i"]
+[ext_resource type="PackedScene" uid="uid://bde8j3s6atc68" path="res://Menus/PlayerHP.tscn" id="4_bdje5"]
+[ext_resource type="PackedScene" uid="uid://c1ka201rbnain" path="res://Gameplay/CurrentWave.tscn" id="6_21d4r"]
+[ext_resource type="PackedScene" uid="uid://byw7pn6823u13" path="res://Gameplay/CurrentEnemyCount.tscn" id="6_yut25"]
+[ext_resource type="Script" path="res://Menus/MainMenu.gd" id="7_1dtip"]
+[ext_resource type="PackedScene" uid="uid://d38w3h1dwge1m" path="res://Gameplay/ScoreCounter.tscn" id="7_w6loo"]
+[ext_resource type="Texture2D" uid="uid://b7r7n2l1tx80i" path="res://Tutorials/KB_W.png" id="8_1wp8x"]
+[ext_resource type="LabelSettings" uid="uid://f072n0du8t6e" path="res://GameName.tres" id="8_hyfdd"]
+[ext_resource type="Texture2D" uid="uid://b5tuhutcdpyu5" path="res://Tutorials/KB_A.png" id="9_mjcu5"]
+[ext_resource type="Texture2D" uid="uid://bjqtmf4lqx4og" path="res://Tutorials/KB_S.png" id="10_8exuj"]
+[ext_resource type="Texture2D" uid="uid://d1ipbd2g81y2b" path="res://Tutorials/KB_D.png" id="11_w1o3g"]
+[ext_resource type="Texture2D" uid="uid://dl73kqlv4fw14" path="res://Tutorials/KB_Arrow.png" id="12_3kqiu"]
+[ext_resource type="Texture2D" uid="uid://cyn3f68msbwg" path="res://Tutorials/Mouse.png" id="13_nip7b"]
+[ext_resource type="LabelSettings" uid="uid://dx2vouh6g2cge" path="res://UI.tres" id="14_8pvl2"]
+[ext_resource type="PackedScene" uid="uid://bg2lkdb30m2du" path="res://Tutorials/StartButton.tscn" id="15_g2d4k"]
+[ext_resource type="PackedScene" uid="uid://bgol4a88vhbjj" path="res://Menus/PlayAgainButton.tscn" id="17_460td"]
+[ext_resource type="PackedScene" uid="uid://dx60dlir6reru" path="res://Gameplay/Wall_Safeguard.tscn" id="19_3q4nl"]
+[ext_resource type="PackedScene" uid="uid://cf2xak1akwwc6" path="res://Menus/PauseMenu.tscn" id="20_vq63p"]
+[ext_resource type="AudioStream" uid="uid://d3j01q3yeuiso" path="res://Sounds/BGM.ogg" id="21_3iv4l"]
+[ext_resource type="PackedScene" uid="uid://bhpcvij04at1l" path="res://Player/Battery.tscn" id="22_oxe56"]
+
+[node name="MainScene" type="Node"]
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 640.0
+offset_bottom = 480.0
+color = Color(0.176419, 0.176419, 0.176419, 1)
+
+[node name="PlayArea" parent="." instance=ExtResource("2_j31kr")]
+position = Vector2(320, 240)
+
+[node name="EnemySpawner" parent="." node_paths=PackedStringArray("spawnArea") instance=ExtResource("3_3uk0i")]
+spawnArea = [NodePath("SpawnBox1"), NodePath("SpawnBox2"), NodePath("SpawnBox3"), NodePath("SpawnBox4")]
+
+[node name="SpawnBox1" type="ReferenceRect" parent="EnemySpawner"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 40.0
+offset_top = -40.0
+offset_right = 600.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SpawnBox2" type="ReferenceRect" parent="EnemySpawner"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 40.0
+offset_top = 500.0
+offset_right = 600.0
+offset_bottom = 520.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SpawnBox3" type="ReferenceRect" parent="EnemySpawner"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 40.0
+offset_top = -40.0
+offset_right = 60.0
+offset_bottom = 520.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SpawnBox4" type="ReferenceRect" parent="EnemySpawner"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 580.0
+offset_top = -40.0
+offset_right = 600.0
+offset_bottom = 520.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartButton" parent="." instance=ExtResource("15_g2d4k")]
+position = Vector2(399, 351)
+scale = Vector2(2, 2)
+
+[node name="Wall_Safeguard" parent="." instance=ExtResource("19_3q4nl")]
+position = Vector2(320, -100)
+
+[node name="Wall_Safeguard2" parent="." instance=ExtResource("19_3q4nl")]
+position = Vector2(320, 580)
+
+[node name="Wall_Safeguard3" parent="." instance=ExtResource("19_3q4nl")]
+position = Vector2(-20, 240)
+rotation = -1.5708
+
+[node name="Wall_Safeguard4" parent="." instance=ExtResource("19_3q4nl")]
+position = Vector2(660, 240)
+rotation = 1.5708
+
+[node name="BGM" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("21_3iv4l")
+volume_db = -10.0
+autoplay = true
+
+[node name="MainMenuLayer" type="CanvasLayer" parent="."]
+layer = 0
+
+[node name="MainMenu" type="Control" parent="MainMenuLayer" node_paths=PackedStringArray("gameUI", "mainMenu")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 120.0
+offset_top = 40.0
+offset_right = -120.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_1dtip")
+gameUI = NodePath("../../GameUILayer/GameUI")
+mainMenu = NodePath(".")
+
+[node name="Game Name" type="Label" parent="MainMenuLayer/MainMenu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -132.0
+offset_top = 40.0
+offset_right = 132.0
+offset_bottom = 84.0
+grow_horizontal = 2
+text = "SHRINK CAT"
+label_settings = ExtResource("8_hyfdd")
+
+[node name="Tutorials" type="Control" parent="MainMenuLayer/MainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 100.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MoveTut" type="Control" parent="MainMenuLayer/MainMenu/Tutorials"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -150.0
+offset_top = 20.0
+offset_right = 150.0
+offset_bottom = 120.0
+grow_horizontal = 2
+
+[node name="MoveText" type="Label" parent="MainMenuLayer/MainMenu/Tutorials/MoveTut"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -29.0
+offset_right = 29.0
+offset_bottom = 22.0
+grow_horizontal = 2
+text = "move"
+label_settings = ExtResource("14_8pvl2")
+horizontal_alignment = 1
+
+[node name="WASD" type="Control" parent="MainMenuLayer/MainMenu/Tutorials/MoveTut"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -60.0
+offset_top = -10.0
+offset_right = -60.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="W" type="TextureRect" parent="MainMenuLayer/MainMenu/Tutorials/MoveTut/WASD"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -32.0
+offset_right = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("8_1wp8x")
+
+[node name="A" type="TextureRect" parent="MainMenuLayer/MainMenu/Tutorials/MoveTut/WASD"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_right = -16.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_mjcu5")
+
+[node name="S" type="TextureRect" parent="MainMenuLayer/MainMenu/Tutorials/MoveTut/WASD"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_right = 16.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_8exuj")
+
+[node name="D" type="TextureRect" parent="MainMenuLayer/MainMenu/Tutorials/MoveTut/WASD"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_right = 48.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("11_w1o3g")
+
+[node name="Arrows" type="Control" parent="MainMenuLayer/MainMenu/Tutorials/MoveTut"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 60.0
+offset_top = -10.0
+offset_right = 60.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Up" type="TextureRect" parent="MainMenuLayer/MainMenu/Tutorials/MoveTut/Arrows"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -32.0
+offset_right = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("12_3kqiu")
+
+[node name="Down" type="TextureRect" parent="MainMenuLayer/MainMenu/Tutorials/MoveTut/Arrows"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 16.0
+offset_top = 32.0
+offset_right = 48.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -3.14159
+texture = ExtResource("12_3kqiu")
+
+[node name="Left" type="TextureRect" parent="MainMenuLayer/MainMenu/Tutorials/MoveTut/Arrows"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = 32.0
+offset_right = -16.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.57079
+texture = ExtResource("12_3kqiu")
+
+[node name="Right" type="TextureRect" parent="MainMenuLayer/MainMenu/Tutorials/MoveTut/Arrows"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 48.0
+offset_right = 80.0
+offset_bottom = 32.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.57079
+texture = ExtResource("12_3kqiu")
+
+[node name="MouseTut" type="Control" parent="MainMenuLayer/MainMenu/Tutorials"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -2.0
+offset_right = -30.0
+offset_bottom = 98.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AimAndFire" type="Label" parent="MainMenuLayer/MainMenu/Tutorials/MouseTut"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -61.0
+offset_right = 61.0
+offset_bottom = 22.0
+grow_horizontal = 2
+text = "Aim + fire"
+label_settings = ExtResource("14_8pvl2")
+horizontal_alignment = 1
+
+[node name="Mouse" type="TextureRect" parent="MainMenuLayer/MainMenu/Tutorials/MouseTut"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -22.0
+offset_top = 28.0
+offset_right = 22.0
+offset_bottom = 92.0
+grow_horizontal = 2
+texture = ExtResource("13_nip7b")
+
+[node name="ShrinkToStart" type="Label" parent="MainMenuLayer/MainMenu/Tutorials"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -5.0
+offset_top = -23.5
+offset_right = 161.0
+offset_bottom = 23.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "Shrink
+to start game"
+label_settings = ExtResource("14_8pvl2")
+horizontal_alignment = 1
+
+[node name="PlayerLayer" type="CanvasLayer" parent="."]
+
+[node name="Player" parent="PlayerLayer" instance=ExtResource("2_durae")]
+position = Vector2(320, 240)
+
+[node name="GameUILayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="GameUI" type="Control" parent="GameUILayer"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 120.0
+offset_top = 40.0
+offset_right = -120.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PlayerHP" parent="GameUILayer/GameUI" instance=ExtResource("4_bdje5")]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = 5.0
+offset_bottom = 5.0
+grow_vertical = 0
+
+[node name="ScoreCounter" parent="GameUILayer/GameUI" instance=ExtResource("7_w6loo")]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 5.0
+offset_bottom = 5.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="CurrentWave" parent="GameUILayer/GameUI" instance=ExtResource("6_21d4r")]
+layout_mode = 1
+offset_top = -5.0
+offset_bottom = -5.0
+
+[node name="CurrentEnemyCount" parent="GameUILayer/GameUI" instance=ExtResource("6_yut25")]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_top = -5.0
+offset_bottom = -5.0
+grow_horizontal = 0
+
+[node name="Battery" parent="GameUILayer/GameUI" instance=ExtResource("22_oxe56")]
+position = Vector2(-28, 340)
+scale = Vector2(2, 2)
+
+[node name="PlayAgainButton" parent="GameUILayer" instance=ExtResource("17_460td")]
+visible = false
+offset_left = 285.0
+offset_top = 420.0
+offset_right = 357.0
+offset_bottom = 468.0
+
+[node name="PauseMenu" parent="GameUILayer" instance=ExtResource("20_vq63p")]
+visible = false
