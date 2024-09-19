@@ -1,13 +1,20 @@
 extends CharacterBody2D
+class_name Enemy
+
+var size
+var speed
 
 var direction
 var collision
+
+
+var startMoving = false
 
 @onready var sprite = $Sprite2D
 @onready var collider = $CollisionShape2D
 @onready var lightCollider = $LightOccluder2D
 
-@onready var player = get_tree().get_first_node_in_group("Player")
+@onready var target = get_tree().get_first_node_in_group("Player")
 @onready var playArea = get_tree().get_first_node_in_group("PlayArea")
 
 @onready var shapeCast = $ShapeCast2D
@@ -23,18 +30,18 @@ var score
 
 signal enemy_defeated
 
-func init(size, speed):
-	
-	sizeInit(size)
-	direction = player.global_position - global_position
+func init(p_size, p_speed):
+	#Basic initialization
+	size = p_size
+	speed = p_speed
 	PlayerManager.is_player_lost.connect(stopMoving)
 	
-	shapeCast.set_target_position(direction)
-	shapeCast.enabled = true
+	sizeInit()
+	directionInit()
 	
 	await get_tree().create_timer(3.0).timeout
 	
-	velocity = direction.normalized() * speed
+	beginMoving()
 
 func _process(delta):
 	sprite.rotation = velocity.angle()
@@ -62,15 +69,29 @@ func _process(delta):
 		
 
 func _physics_process(delta):
-	collision = move_and_collide(velocity * delta)
-	if collision:
-		velocity = velocity.bounce(collision.get_normal())
-
-func sizeInit(size):
+	if startMoving:
+		setVelocity()
+		collision = move_and_collide(velocity * delta)
+		if collision:
+			velocity = velocity.bounce(collision.get_normal())
+			
+func sizeInit():
 	sprite.scale *= size
 	collider.scale *= size
 	lightCollider.scale *= size
 	shapeCast.shape.radius *= size
+
+func directionInit():
+	direction = target.global_position - global_position
+	shapeCast.set_target_position(direction)
+	shapeCast.enabled = true
+
+func beginMoving():
+	startMoving = true
+
+func setVelocity():
+	#To be overridden
+	pass
 
 func die():
 	var deathVFX = poofVFX.instantiate()
@@ -86,7 +107,7 @@ func setInLight(inLight):
 
 func stopMoving():
 	velocity = Vector2.ZERO
-
+	startMoving = false
 
 func _on_area_collider_area_entered(area):
 	if area.is_in_group('Light'):

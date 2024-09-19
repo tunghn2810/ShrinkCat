@@ -16,7 +16,7 @@ texture = ExtResource("2_irbqw")
 self_modulate = Color(0.458824, 0.654902, 0.262745, 1)
 position = Vector2(0, 29)
 texture = ExtResource("3_l6uj5")
-offset = Vector2(0, -29)
+offset = Vector2(0, -28.5)
 
 [node name="Bars" type="Sprite2D" parent="."]
 texture = ExtResource("4_w4rjk")

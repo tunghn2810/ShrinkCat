@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var spawnArea : Array[ReferenceRect]
-var enemy : PackedScene = preload("res://Enemies/Enemy.tscn")
+var enemy : PackedScene = preload("res://Enemies/Enemy_Track.tscn")
 @onready var player = get_tree().get_first_node_in_group("Player")
 
 @onready var spawnTimer = $SpawnTimer

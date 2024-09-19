@@ -1,10 +1,13 @@
 extends CharacterBody2D
 
 
-const SPEED = 100.0
-var direction
-var directionX
-var directionY
+const SPEED : float = 100.0
+var direction : Vector2
+var directionX : float
+var directionY : float
+
+var lightRotateSpeed :float = 10
+var lightTargetVector : Vector2
 
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var flash : Sprite2D = $Flash
@@ -42,7 +45,10 @@ func _physics_process(delta):
 		return
 		
 	#Flashlight rotation
-	flash.look_at(get_global_mouse_position())
+	#flash.look_at(get_global_mouse_position())
+	#Smooth rotation
+	lightTargetVector = get_global_mouse_position() - global_position
+	flash.rotation = lerp_angle(flash.rotation, atan2(lightTargetVector.y, lightTargetVector.x), lightRotateSpeed * delta)
 	
 	#Movement
 	directionX = Input.get_axis("move_left", "move_right")

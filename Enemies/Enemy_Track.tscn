@@ -1,7 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://fod4mdkjaax7"]
+[gd_scene load_steps=6 format=3 uid="uid://xopw5fu4sr71"]
 
-[ext_resource type="Script" path="res://Enemies/enemy.gd" id="1_saddt"]
-[ext_resource type="Texture2D" uid="uid://crv7nf0p11lwj" path="res://Enemies/Enemy.png" id="2_uh34v"]
+[ext_resource type="Script" path="res://Enemies/enemy_track.gd" id="1_elacb"]
+[ext_resource type="Texture2D" uid="uid://nqrl5esforsi" path="res://Enemies/Enemy_Track.png" id="2_psyhr"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n1bkw"]
 radius = 16.0
@@ -12,14 +12,17 @@ polygon = PackedVector2Array(16, 0, 15, -6, 12, -11, 11, -12, 6, -15, 0, -16, -6
 [sub_resource type="CircleShape2D" id="CircleShape2D_5a1up"]
 radius = 12.0
 
-[node name="Enemy" type="CharacterBody2D" groups=["Enemy"]]
+[node name="Enemy_Track" type="CharacterBody2D" groups=["Enemy"]]
 collision_layer = 2
 collision_mask = 44
 motion_mode = 1
-script = ExtResource("1_saddt")
+script = ExtResource("1_elacb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_uh34v")
+texture = ExtResource("2_psyhr")
+
+[node name="Forward" type="Node2D" parent="Sprite2D"]
+position = Vector2(50, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_n1bkw")

@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://fod4mdkjaax7"]
+
+[ext_resource type="Script" path="res://Enemies/enemy_basic.gd" id="1_0nndo"]
+[ext_resource type="Texture2D" uid="uid://crv7nf0p11lwj" path="res://Enemies/Enemy_Basic.png" id="2_38v4b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n1bkw"]
+radius = 16.0
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_x00mo"]
+polygon = PackedVector2Array(16, 0, 15, -6, 12, -11, 11, -12, 6, -15, 0, -16, -6, -15, -11, -12, -12, -11, -15, -6, -16, 0, -15, 6, -12, 11, -11, 12, -6, 15, 0, 16, 6, 15, 11, 12, 12, 11, 15, 6)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_5a1up"]
+radius = 12.0
+
+[node name="Enemy_Basic" type="CharacterBody2D" groups=["Enemy"]]
+collision_layer = 2
+collision_mask = 44
+motion_mode = 1
+script = ExtResource("1_0nndo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_38v4b")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_n1bkw")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_x00mo")
+
+[node name="AreaCollider" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 41
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaCollider"]
+shape = SubResource("CircleShape2D_n1bkw")
+
+[node name="ShapeCast2D" type="ShapeCast2D" parent="."]
+enabled = false
+shape = SubResource("CircleShape2D_5a1up")
+collision_mask = 32
+collide_with_areas = true
+collide_with_bodies = false
+
+[connection signal="area_entered" from="AreaCollider" to="." method="_on_area_collider_area_entered"]
+[connection signal="area_exited" from="AreaCollider" to="." method="_on_area_collider_area_exited"]
