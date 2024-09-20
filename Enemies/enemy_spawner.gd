@@ -7,7 +7,7 @@ var enemy : PackedScene = preload("res://Enemies/Enemy_Track.tscn")
 @onready var spawnTimer = $SpawnTimer
 @onready var waveIntervalTimer = $WaveInterval
 
-var enemyToSpawn = 5
+var enemyToSpawn : int
 var isSpawning = false
 
 const BASE_SIZE = 1

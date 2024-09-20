@@ -44,8 +44,6 @@ func init(p_size, p_speed):
 	beginMoving()
 
 func _process(delta):
-	sprite.rotation = velocity.angle()
-	
 	if isInLight:
 		scale *= PlayerManager.lightShrinkRate
 	
@@ -70,10 +68,10 @@ func _process(delta):
 
 func _physics_process(delta):
 	if startMoving:
-		setVelocity()
 		collision = move_and_collide(velocity * delta)
 		if collision:
 			velocity = velocity.bounce(collision.get_normal())
+			setRotation()
 			
 func sizeInit():
 	sprite.scale *= size
@@ -92,6 +90,10 @@ func beginMoving():
 func setVelocity():
 	#To be overridden
 	pass
+
+#Should be called with setVelocity
+func setRotation():
+	sprite.rotation = velocity.angle()
 
 func die():
 	var deathVFX = poofVFX.instantiate()
