@@ -23,6 +23,7 @@ PlayerManager="*res://Player/player_manager.gd"
 EnemyManager="*res://Gameplay/enemy_manager.gd"
 ColorPalette="*res://color_palette.gd"
 TimeManager="*res://time_manager.gd"
+DataImport="*res://data_import.gd"
 
 [display]
 

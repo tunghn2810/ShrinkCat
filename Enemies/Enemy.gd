@@ -3,6 +3,7 @@ class_name Enemy
 
 var size
 var speed
+var score
 
 var direction
 var collision
@@ -26,17 +27,15 @@ var isInLight = false
 
 var poofVFX : PackedScene = preload("res://Enemies/PoofVFX.tscn")
 
-var score
-
 signal enemy_defeated
 
-func init(p_size, p_speed):
+func init():
 	#Basic initialization
-	size = p_size
-	speed = p_speed
+	sizeInit()
+	speedInit()
+	scoreInit()
 	PlayerManager.is_player_lost.connect(stopMoving)
 	
-	sizeInit()
 	directionInit()
 	
 	await get_tree().create_timer(3.0).timeout
@@ -74,10 +73,18 @@ func _physics_process(delta):
 			setRotation()
 			
 func sizeInit():
+	size = 1 + EnemyManager.waveCount * 0.05
+	
 	sprite.scale *= size
 	collider.scale *= size
 	lightCollider.scale *= size
 	shapeCast.shape.radius *= size
+
+func speedInit():
+	speed += EnemyManager.waveCount * 10
+
+func scoreInit():
+	score += EnemyManager.waveCount * 5
 
 func directionInit():
 	direction = target.global_position - global_position

@@ -10,6 +10,14 @@ var rotating : bool = false
 
 @onready var lightAnim : AnimationPlayer = $Sprite2D/Light/AnimationPlayer
 
+func speedInit():
+	speed = 130
+	super.speedInit()
+
+func scoreInit():
+	score = 130
+	super.scoreInit()
+
 func turn():
 	targetVector = target.global_position - global_position
 	sprite.rotation = lerp_angle(sprite.rotation, atan2(targetVector.y, targetVector.x), rotateSpeed * get_physics_process_delta_time())

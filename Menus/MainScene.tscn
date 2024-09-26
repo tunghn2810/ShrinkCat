@@ -109,7 +109,7 @@ rotation = 1.5708
 
 [node name="BGM" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("21_3iv4l")
-volume_db = -10.0
+volume_db = -20.0
 autoplay = true
 
 [node name="MainMenuLayer" type="CanvasLayer" parent="."]

@@ -1,7 +1,14 @@
 extends Enemy
 
-
 const MAX_FORCE = 0.02
+
+func speedInit():
+	speed = 120
+	super.speedInit()
+
+func scoreInit():
+	score = 120
+	super.scoreInit()
 
 func setVelocity():
 	velocity = steer()
