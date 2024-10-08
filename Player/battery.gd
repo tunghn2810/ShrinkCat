@@ -2,8 +2,8 @@ extends Node2D
 
 const MAX_BATTERY_LIFE = 100
 var currentBatteryLife = 100
-var batteryDrainRate = 25
-var batteryRecoverRate = 50
+var batteryDrainRate = 25 #4 seconds to deplete
+var batteryRecoverRate = 50 #2 seconds to refill
 
 @onready var gauge = $Gauge
 @onready var overheat = $Overheat
@@ -12,9 +12,8 @@ var heatLerpColor = Color(1, 1, 1, 0.5)
 func _process(delta):
 	if !GameManager.isGameStarted:
 		return
-	
 	if (PlayerManager.isLightActive):
-		currentBatteryLife -= batteryDrainRate * delta
+		currentBatteryLife -= batteryDrainRate * PlayerManager.batteryDrainRateMultiplier * delta
 	else:
 		currentBatteryLife += batteryRecoverRate * delta
 	

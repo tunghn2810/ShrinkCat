@@ -2,18 +2,18 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://ck8nmch4jquu4"
-path="res://.godot/imported/The Impostor.ttf-bef5ff37ed6fc2a543e01249c62e45b1.fontdata"
+uid="uid://eynytcgsimgk"
+path="res://.godot/imported/Perfect DOS VGA 437 Win.ttf-fe14a6f19e7be773898a775dce7cc487.fontdata"
 
 [deps]
 
-source_file="res://The Impostor.ttf"
-dest_files=["res://.godot/imported/The Impostor.ttf-bef5ff37ed6fc2a543e01249c62e45b1.fontdata"]
+source_file="res://Perfect DOS VGA 437 Win.ttf"
+dest_files=["res://.godot/imported/Perfect DOS VGA 437 Win.ttf-fe14a6f19e7be773898a775dce7cc487.fontdata"]
 
 [params]
 
 Rendering=null
-antialiasing=0
+antialiasing=1
 generate_mipmaps=false
 disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
@@ -28,13 +28,7 @@ Fallbacks=null
 fallbacks=[]
 Compress=null
 compress=true
-preload=[{
-"chars": [],
-"glyphs": [],
-"name": "New Configuration",
-"size": Vector2i(16, 0),
-"variation_embolden": 0.0
-}]
+preload=[]
 language_support={}
 script_support={}
 opentype_features={}

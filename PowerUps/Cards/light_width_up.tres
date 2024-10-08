@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PowerUpResource" load_steps=3 format=3 uid="uid://b2km0knm66pvl"]
+
+[ext_resource type="Texture2D" uid="uid://bb3fuy66px5hj" path="res://PowerUps/Cards/Icons/LightWidthUp.png" id="1_0jdmf"]
+[ext_resource type="Script" path="res://PowerUps/power_up_resource.gd" id="1_nst3j"]
+
+[resource]
+script = ExtResource("1_nst3j")
+title = "Light Width Up"
+icon = ExtResource("1_0jdmf")
+description = "Increase the width of the light"

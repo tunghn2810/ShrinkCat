@@ -1,0 +1,8 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bo6ktj5p24gub"]
+
+[ext_resource type="FontFile" uid="uid://ck8nmch4jquu4" path="res://The Impostor.ttf" id="1_civdq"]
+
+[resource]
+font = ExtResource("1_civdq")
+font_color = Color(0, 0, 0, 1)
+outline_color = Color(0, 0, 0, 1)

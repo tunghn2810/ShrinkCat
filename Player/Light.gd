@@ -1,13 +1,18 @@
 extends Node2D
 
-var time = 0.0
-var duration = 0.5
-var t
+#Lerp timer for light on-off
+var time : float = 0.0
+var duration : float = 0.5
+var t : float
 
-var isTurnedOn = false
-var isLerping = false
+var isTurnedOn : bool = false
+var isLerping : bool = false
+
+#Point light scale
 var lightScaleX
 var lightScaleY
+
+#Area2D scale
 var lightAreaScaleX
 var lightAreaScaleY
 
@@ -29,6 +34,9 @@ func _ready():
 	
 	PlayerManager.light_overheat.connect(turnOff)
 	GameManager.game_unpaused.connect(turnOffOnUnpause)
+	
+	PlayerManager.light_length_updated.connect(upgradeLightLength)
+	PlayerManager.light_width_updated.connect(upgradeLightWidth)
 
 #func _process(delta):
 	#Case for when one enemy blocks another
@@ -77,6 +85,14 @@ func _physics_process(delta):
 				
 			isLerping = false
 	
+
+func upgradeLightLength():
+	lightScaleX *= PlayerManager.lightLengthMultiplier
+	lightAreaScaleX *= PlayerManager.lightLengthMultiplier
+
+func upgradeLightWidth():
+	lightScaleY *= PlayerManager.lightWidthMultiplier
+	lightAreaScaleY *= PlayerManager.lightWidthMultiplier
 
 func turnOn():
 	time = 0

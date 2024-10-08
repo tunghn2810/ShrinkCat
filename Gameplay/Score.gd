@@ -6,4 +6,5 @@ func _ready():
 	PlayerManager.player_score_updated.connect(updateScore)
 
 func updateScore():
-	text = "%07d" % PlayerManager.playerScore
+	#text = "%07d" % PlayerManager.playerScore
+	text = str(PlayerManager.playerScore)

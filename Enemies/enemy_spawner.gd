@@ -88,9 +88,14 @@ func reduceEnemyCount():
 	if (!isSpawning && EnemyManager.currentEnemyCount == 0):
 		EnemyManager.waveCount += 1
 		EnemyManager.wave_finished.emit()
-		waveIntervalTimer.start()
 		
+		#Pause before power-up menu
+		waveIntervalTimer.start()
 		await waveIntervalTimer.timeout
+		
+		PowerUpManager.power_menu_opened.emit()
+		#Wait until player picks a power-up
+		await PowerUpManager.power_up_picked
 		
 		startSpawning()
 

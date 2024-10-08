@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://cwrptm7li7rln"]
+[gd_scene load_steps=24 format=3 uid="uid://cwrptm7li7rln"]
 
 [ext_resource type="PackedScene" uid="uid://dq828syq2wo4m" path="res://Player/Player.tscn" id="2_durae"]
 [ext_resource type="PackedScene" uid="uid://dpc528etogq2b" path="res://Menus/PlayArea.tscn" id="2_j31kr"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://cf2xak1akwwc6" path="res://Menus/PauseMenu.tscn" id="20_vq63p"]
 [ext_resource type="AudioStream" uid="uid://d3j01q3yeuiso" path="res://Sounds/BGM.ogg" id="21_3iv4l"]
 [ext_resource type="PackedScene" uid="uid://bhpcvij04at1l" path="res://Player/Battery.tscn" id="22_oxe56"]
+[ext_resource type="PackedScene" uid="uid://v3t6o40i5g41" path="res://PowerUps/PowerUp_Menu.tscn" id="23_1aqge"]
 
 [node name="MainScene" type="Node"]
 
@@ -108,8 +109,9 @@ position = Vector2(660, 240)
 rotation = 1.5708
 
 [node name="BGM" type="AudioStreamPlayer2D" parent="."]
+process_mode = 3
 stream = ExtResource("21_3iv4l")
-volume_db = -20.0
+volume_db = -10.0
 autoplay = true
 
 [node name="MainMenuLayer" type="CanvasLayer" parent="."]
@@ -446,4 +448,7 @@ offset_right = 357.0
 offset_bottom = 468.0
 
 [node name="PauseMenu" parent="GameUILayer" instance=ExtResource("20_vq63p")]
+visible = false
+
+[node name="Power-upMenu" parent="GameUILayer" instance=ExtResource("23_1aqge")]
 visible = false

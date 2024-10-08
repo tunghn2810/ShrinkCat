@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PowerUpResource" load_steps=3 format=3 uid="uid://div3so11bovc6"]
+
+[ext_resource type="Script" path="res://PowerUps/power_up_resource.gd" id="1_4hkyx"]
+[ext_resource type="Texture2D" uid="uid://chm4gkiffjsw0" path="res://PowerUps/Cards/Icons/SpeedUp.png" id="1_a0osc"]
+
+[resource]
+script = ExtResource("1_4hkyx")
+title = "Speed Up"
+icon = ExtResource("1_a0osc")
+description = "Make you faster"

@@ -1,5 +1,8 @@
 extends Control
 
+@onready var pauseSFX : AudioStreamPlayer2D = $PauseSFX
+@onready var bgm : AudioStreamPlayer2D = $"../../BGM"
+
 func _input(event):
 	if event.is_action_pressed("pause"):
 		get_tree().paused = !get_tree().paused
@@ -13,5 +16,9 @@ func _input(event):
 func pauseGame(isPaused : bool):
 	visible = isPaused
 	GameManager.isGamePaused = isPaused
-	if (!isPaused):
+	if isPaused:
+		pauseSFX.play()
+		bgm.stream_paused = true
+	else:
 		GameManager.game_unpaused.emit()
+		bgm.stream_paused = false

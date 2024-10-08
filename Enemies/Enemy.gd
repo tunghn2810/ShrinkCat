@@ -36,6 +36,9 @@ func init():
 	scoreInit()
 	PlayerManager.is_player_lost.connect(stopMoving)
 	
+	#Temporarily disable collision with walls
+	set_collision_mask_value(3, false)
+	
 	directionInit()
 	
 	await get_tree().create_timer(3.0).timeout
@@ -44,7 +47,8 @@ func init():
 
 func _process(delta):
 	if isInLight:
-		scale *= PlayerManager.lightShrinkRate
+		#scale *= PlayerManager.lightShrinkRate
+		scale -= Vector2.ONE * PlayerManager.lightShrinkRate
 	
 	if scale.x <= 0.1:
 		die()
@@ -126,6 +130,9 @@ func _on_area_collider_area_entered(area):
 		if warningSign != null:
 			warningSign.queue_free()
 		shapeCast.enabled = false
+		
+		#Give back collision with walls once entered the play area
+		set_collision_mask_value(3, true)
 
 func _on_area_collider_area_exited(area):
 	if area.is_in_group('Light'):

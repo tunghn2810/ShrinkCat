@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PowerUpResource" load_steps=3 format=3 uid="uid://b0iq7v4k1dbkl"]
+
+[ext_resource type="Script" path="res://PowerUps/power_up_resource.gd" id="1_amvoh"]
+[ext_resource type="Texture2D" uid="uid://b2q58d1bjdmyc" path="res://PowerUps/Cards/Icons/BatteryUp.png" id="1_r13c3"]
+
+[resource]
+script = ExtResource("1_amvoh")
+title = "Battery Up"
+icon = ExtResource("1_r13c3")
+description = "Battery lasts longer"

@@ -10,6 +10,7 @@ var lightRotateSpeed :float = 10
 var lightTargetVector : Vector2
 
 @onready var sprite : Sprite2D = $Sprite2D
+@onready var loseSprite : AnimatedSprite2D = $LoseSprite
 @onready var flash : Sprite2D = $Flash
 @onready var light : Node2D = $Flash/Light
 
@@ -25,6 +26,7 @@ var hitTexture : Texture2D = preload("res://Player/CatBlob_Hit.png")
 func _ready():
 	loseAnim.play()
 	loseAnim.hide()
+	PlayerManager.player_size_updated.connect(updateSize)
 
 func _process(delta):
 	if PlayerManager.isPlayerLost:
@@ -55,7 +57,7 @@ func _physics_process(delta):
 	directionY = Input.get_axis("move_up", "move_down")
 	direction = Vector2(directionX, directionY).normalized()
 	
-	velocity = direction * SPEED
+	velocity = direction * SPEED * PlayerManager.playerSpeedMultiplier
 	
 	if directionX > 0:
 		sprite.flip_h = false
@@ -68,7 +70,6 @@ func getHit():
 	sprite.texture = hitTexture
 	$HitPlayer.play()
 	
-	PlayerManager.playerHealth -= 1
 	PlayerManager.is_player_damaged.emit()
 	
 	enemyDetection.set_deferred("monitorable", false)
@@ -112,6 +113,11 @@ func lose():
 	#Lose screen
 	#$"../UI/LoseScreen".visible = true
 	
+
+func updateSize():
+	sprite.scale *= PlayerManager.playerSizeMultiplier
+	loseSprite.scale *= PlayerManager.playerSizeMultiplier
+	enemyDetection.scale *= PlayerManager.playerSizeMultiplier
 
 func _on_enemy_detection_body_entered(body):
 	if body.is_in_group('Enemy'):

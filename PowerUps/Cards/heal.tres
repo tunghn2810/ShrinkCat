@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PowerUpResource" load_steps=3 format=3 uid="uid://hensdrvr486d"]
+
+[ext_resource type="Script" path="res://PowerUps/power_up_resource.gd" id="1_tevn5"]
+[ext_resource type="Texture2D" uid="uid://k2ym7h1chtfw" path="res://PowerUps/Cards/Icons/Heal.png" id="1_vfqsj"]
+
+[resource]
+script = ExtResource("1_tevn5")
+title = "Heal"
+icon = ExtResource("1_vfqsj")
+description = "Heal 1 HP"

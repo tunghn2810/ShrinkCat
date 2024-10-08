@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Shrink Cat"
-config/version="0.1.0"
+config/version="0.3.0"
 run/main_scene="res://Menus/MainScene.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://Icon.png"
@@ -24,6 +24,7 @@ EnemyManager="*res://Gameplay/enemy_manager.gd"
 ColorPalette="*res://color_palette.gd"
 TimeManager="*res://time_manager.gd"
 DataImport="*res://data_import.gd"
+PowerUpManager="*res://PowerUps/power_up_manager.gd"
 
 [display]
 

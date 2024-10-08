@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PowerUpResource" load_steps=3 format=3 uid="uid://banpgfj6lnjnm"]
+
+[ext_resource type="Script" path="res://PowerUps/power_up_resource.gd" id="1_6cjcg"]
+[ext_resource type="Texture2D" uid="uid://ctlfyjx3uf572" path="res://PowerUps/Cards/Icons/SizeDown.png" id="1_g3hkk"]
+
+[resource]
+script = ExtResource("1_6cjcg")
+title = "Size Down"
+icon = ExtResource("1_g3hkk")
+description = "Make you smaller"

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PowerUpResource" load_steps=3 format=3 uid="uid://bsr3y1g3darpk"]
+
+[ext_resource type="Script" path="res://PowerUps/power_up_resource.gd" id="1_gt8rl"]
+[ext_resource type="Texture2D" uid="uid://bwlkj1okgx0cu" path="res://PowerUps/Cards/Icons/LightSpeedUp.png" id="1_qv184"]
+
+[resource]
+script = ExtResource("1_gt8rl")
+title = "Light Strength Up"
+icon = ExtResource("1_qv184")
+description = "Increase the shrink rate of the light"
