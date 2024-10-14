@@ -9,7 +9,7 @@ var directionY : float
 var lightRotateSpeed :float = 10
 var lightTargetVector : Vector2
 
-@onready var sprite : Sprite2D = $Sprite2D
+@onready var sprite : Sprite2D = $SpriteContainer/Sprite2D
 @onready var loseSprite : AnimatedSprite2D = $LoseSprite
 @onready var flash : Sprite2D = $Flash
 @onready var light : Node2D = $Flash/Light
